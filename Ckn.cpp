@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int m[100][100];
+int m[1000][1000];
 
 int C(int k, int n){
     if(k == 0 || k == n){
