@@ -1,6 +1,7 @@
-
+//linhdzeet!! follow plz!!
 
 #include<bits/stdc++.h>
+#define F(i,p) for (Node* i = p;i!=NULL;i=i->next)
 using namespace std;
 
 struct Node{
@@ -14,12 +15,11 @@ Node* head3;
 Node* headChan;
 Node* headLe;
 void printList(Node* h){
-    Node* p = h;
-    while(p != NULL){
-        printf("%d ",p->value);
-        p = p->next;
+    if(!h) cout<<"List EMPTY!";
+    else
+        F(p,h)
+            printf("%d ",p->value);
     }
-}
 
 Node* makeNode(int x){
     Node* q = new Node ;
@@ -74,7 +74,31 @@ Node* find(Node*h, int x){
     }
     return NULL;
 }
+// find Mid Id of LinkerList
+// create Node p1,p2: p1 increase 1pnext,p2 increase 2pnext
+// when p2 -> end of list,p1->Mid of list
+Node* findMid(Node* h){
+    if(!h) return NULL;
+    Node* p1 = h;
+    Node* p2 = h;
+    while(p2->next){
+        p2=p2->next->next;
+        if(!p2) return p1;
+        p1=p1->next;
+    }
+    return p1;
+}
+//find max of evenNumber of increase List
+int findMax(Node* h){
+    if(!h) return 0;
+    int max=0;
+    F(p,h){
+        if(p->value %2==0)
+            max = p->value;
+    }
+    return max;
 
+}
 Node* removeRecursive(Node* h, Node* p){
     if(h == NULL) return NULL;
     if(p == NULL) return h;
@@ -178,8 +202,27 @@ Node* merge(Node*l1,Node*l2){
 		l->next = merge(l1, l2->next);
 	}
 	return l;
+}
+// return intersect of 2 increamentalList
+Node* isection(Node* h1,Node* h2){
+    if(!h1 || !h2) return NULL;
+    Node* l =NULL;
+        if(h1->value == h2->value){
+            l=h1;
+            l->next = isection(h1->next,h2->next);
+        }
+        if(h1->value < h2->value){
 
-    }
+           l=isection(h1->next,h2);
+        }
+        if(h1->value > h2->value){
+
+           l=isection(h1,h2->next);
+        }
+
+    return l;
+}
+  
 //noi 2 day :d1 day tang dan.d2 day giam dan -> giam dan!
 Node* giamDan(Node*h1,Node*h2){
     Node*temp1=new Node;
