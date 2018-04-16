@@ -20,17 +20,19 @@ void allocMatrix(int ***A,int row,int colum){
 	for(int i =0;i<row;i++)
 		(*A)[i] = new int[colum];
 }
-void creatData(ofstream &ofs){
+void creatData(ofstream &ofs,int numberMatrix){
 	int n = 3+rand()%10;
 	int m=  3+rand()%10;
-	ofs<<n<<" "<<m<<endl;
-	for(int i =0;i<n;i++){
-		for(int j =0;j<m;j++){
-			ofs<<10+rand()%10 <<"  ";
+	for(int k=0;k<numberMatrix;k++){
+		ofs<<n<<" "<<m<<endl;
+		for(int i =0;i<n;i++){
+			for(int j =0;j<m;j++){
+				ofs<<10+rand()%10 <<"  ";
+			}
+			ofs<<endl;
 		}
 		ofs<<endl;
 	}
-	ofs<<endl;
 }
 
 void inputMatrix(Matrix A,ifstream &ifs){
