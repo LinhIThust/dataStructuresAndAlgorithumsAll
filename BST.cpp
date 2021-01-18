@@ -28,4 +28,5 @@ Node* insertTree(Node*r,int x){
 }
 
 int main(){
+	cout<<"awsome projects";
 }
